@@ -160,7 +160,15 @@ public class ProductPageAction extends ActionSupport {
 	public void setSearch(String search) {
 		this.search = search;
 	}
+	private String tag;
 	
+	
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
 	/**
 	 * 搜索分页-热门排序
 	 * @return
@@ -182,7 +190,25 @@ public class ProductPageAction extends ActionSupport {
 		}
 		return "pageIsTopSearch";
 	}
-	
+	/**
+	 * 搜索分页-标签搜索
+	 * @return
+	 */
+	public String pageSearchTag(){
+		pageSize = 18;
+		int productAmount = ppService.getAmountOfTag(this.tag);
+		if(productAmount == 0){
+			return "pageIsTopSearchFailed";
+		}
+		this.totalpage = productAmount%pageSize==0?(productAmount/pageSize):(productAmount/pageSize+1);
+		if(pageNum<=0){
+			this.pageNum=1;
+		}
+		if(pageNum>totalpage){
+			this.pageNum=totalpage;
+		}
+		return "pageTagSearch";
+	}
 	public String pageSearchIsTop1() throws UnsupportedEncodingException{
 		//search = (String)ServletActionContext.getRequest().getSession().getAttribute("search");//--
 		//search = new String(this.search.getBytes("ISO-8859-1"),"UTF-8");//++
@@ -198,6 +224,21 @@ public class ProductPageAction extends ActionSupport {
 		}
 		return "pageIsTopSearch";
 	}
+	public String pageSearchTag1() throws UnsupportedEncodingException{
+		//search = (String)ServletActionContext.getRequest().getSession().getAttribute("search");//--
+		//search = new String(this.search.getBytes("ISO-8859-1"),"UTF-8");//++
+		pageSize = 18;
+		int productAmount = ppService.getAmountOfTag(tag);
+		//ServletActionContext.getRequest().getSession().setAttribute("search", search);//--
+		this.totalpage = productAmount%pageSize==0?(productAmount/pageSize):(productAmount/pageSize+1);
+		if(pageNum<=0){
+			this.pageNum=1;
+		}
+		if(pageNum>totalpage){
+			this.pageNum=totalpage;
+		}
+		return "pageTagSearch";
+	}
 	/**
 	 * 搜索分页-热门排序
 	 * @return
@@ -211,6 +252,17 @@ public class ProductPageAction extends ActionSupport {
 		//search = new String(search.getBytes("ISO-8859-1"),"UTF-8");
 		isTopSearchProductList = ppService.findSearchIsTop(search, pageNum, pageSize);
 		return "isTopListSearch";
+	}
+	/**
+	 * 搜索分页-标签搜索排序
+	 * @return
+	 * @throws UnsupportedEncodingException 
+	 */
+	public String findAllSearchTag() throws UnsupportedEncodingException{
+		themeTypeList = ppService.findThemeTypeList();
+		homeTDList = ppService.findHomeTD();
+		isTopSearchProductList = ppService.findSearchTag(tag, pageNum, pageSize);
+		return "tagListSearch";
 	}
 	
 	

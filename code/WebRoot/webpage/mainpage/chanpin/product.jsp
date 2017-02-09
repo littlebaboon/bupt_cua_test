@@ -114,6 +114,15 @@
 
 				</div>
 			</s:form>
+			<s:form action="productPage_pageSearchTag" cssClass="search-form"
+				theme="simple">
+				<div class="lm-index-search">
+					<s:textfield name="tag" cssClass="lm-search-text"
+						placeholder="请输入标签" />
+					<input id="tagSearchBtn" type="submit" class="lm-search-btn"
+						style="position: absolute;top: 7px;left: 202px;" value="go" />
+				</div>
+			</s:form>
 		</div>
 		<!-- 排行区域 -->
 

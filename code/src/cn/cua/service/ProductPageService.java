@@ -64,6 +64,14 @@ public class ProductPageService {
 	public int getAmountOfSearch(String search){
 		return ppDao.getAmountOfSearch(search);
 	}
+	/**
+	 * 标签搜索-分页
+	 * @param tag
+	 * @return
+	 */
+	public int getAmountOfTag(String tag){
+		return ppDao.getAmountOfTag(tag);
+	}
 	
 	/**
 	 * 产品推荐首页-搜索价格排序
@@ -85,5 +93,15 @@ public class ProductPageService {
 	 */
 	public List<ProductInfo> findSearchIsTop(String search,int pageNum,int pageSize){
 		return ppDao.findSearchIsTop(search, pageNum, pageSize);
+	}
+	/**
+	 * 产品推荐首页-搜索相应标签产品
+	 * @param tag
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public List<ProductInfo> findSearchTag(String tag,int pageNum,int pageSize){
+		return ppDao.findSearchTag(tag, pageNum, pageSize);
 	}
 }
