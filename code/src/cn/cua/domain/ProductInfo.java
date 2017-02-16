@@ -23,7 +23,8 @@ public class ProductInfo {
 	private Integer orderWeight;
 	
 	private int businessId; //发布该产品的商家ID（新增）
-	
+	private String tags;//该产品所关联的子标签序列
+	private String relate;//相对应的子标签相关度
 	
 	
 	public ProductInfo() {
@@ -35,7 +36,7 @@ public class ProductInfo {
 			String productCellphone, String productDescription,
 			String productFileName, String productRealName, String isTop,
 			String isPublic, String startDate, String endDate, String cityName,
-			String costDescription, String productFeature, int businessId) {
+			String costDescription, String productFeature, int businessId,String tags,String relate) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -52,6 +53,24 @@ public class ProductInfo {
 		this.costDescription = costDescription;
 		this.productFeature = productFeature;
 		this.businessId = businessId;
+		this.tags=tags;
+		this.relate=relate;
+	}
+
+	public String getTags() {
+		return tags;
+	}
+
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
+
+	public String getRelate() {
+		return relate;
+	}
+
+	public void setRelate(String relate) {
+		this.relate = relate;
 	}
 
 	public int getProductId() {
@@ -147,10 +166,6 @@ public class ProductInfo {
 		this.costDescription = costDescription;
 	}
 
-	
-	
-	
-	
 //商家ID的get set
 	public int getBusinessId() {
 		return businessId;
@@ -160,6 +175,8 @@ public class ProductInfo {
 		this.businessId = businessId;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "ProductInfo [productId=" + productId + ", productName="
@@ -167,11 +184,12 @@ public class ProductInfo {
 				+ ", productCellphone=" + productCellphone
 				+ ", productDescription=" + productDescription
 				+ ", productFileName=" + productFileName + ", productRealName="
-				+ productRealName + ", isTop=" + isTop + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", cityName=" + cityName
-				+ ", costDescription=" + costDescription + ", productFeature=" + productFeature 
-				+ ", businessId = "+ businessId
-				+"]";
+				+ productRealName + ", isTop=" + isTop + ", isPublic="
+				+ isPublic + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", cityName=" + cityName + ", costDescription="
+				+ costDescription + ", productFeature=" + productFeature
+				+ ", orderWeight=" + orderWeight + ", businessId=" + businessId
+				+ ", tags=" + tags + ", relate=" + relate + "]";
 	}
 
 	public Integer getOrderWeight() {

@@ -22,6 +22,7 @@
 		<property name="productFeature"></property>
 		<property name="orderWeight"></property>
 		<property name="businessId"></property>
-
+		<property name="tags"></property>
+		<property name="relate"></property>
 	</class>
 </hibernate-mapping>

@@ -105,10 +105,18 @@
 				<param name="pageSize">${pageSize}</param>
 				<param name="search">${search}</param>
 			</result>
-
-			<result name="pageIsTopSearchFailed" >/webpage/mainpage/chanpin/fail.jsp</result>
-			<result name="isTopListSearch">/webpage/mainpage/chanpin/product_search.jsp
+			
+			<result name="pageTagSearch" type="redirectAction">
+				<param name="actionName">productPage_findAllSearchTag</param>
+				<param name="pageNum">${pageNum}</param>
+				<param name="totalpage">${totalpage}</param>
+				<param name="pageSize">${pageSize}</param>
+				<param name="tag">${tag}</param>
 			</result>
+			
+			<result name="pageIsTopSearchFailed" >/webpage/mainpage/chanpin/fail.jsp</result>
+			<result name="isTopListSearch">/webpage/mainpage/chanpin/product_search.jsp</result>
+			<result name="tagListSearch">/webpage/mainpage/chanpin/product_searchTag.jsp</result>
 			<result name="pagePriceSearch" type="redirectAction">
 				<param name="actionName">productPage_findAllSearchPrice</param>
 				<param name="pageNum">${pageNum}</param>
@@ -122,6 +130,8 @@
 			<result name="priceListSearch">/webpage/mainpage/chanpin/product_searchPrice.jsp
 			</result>
 		</action>
+		
+		
 		<action name="productCityPage_*" class="cn.cua.action.ProductCityPageAction"
 			method="{1}">
 			<result name="pageIsTop" type="redirectAction">
